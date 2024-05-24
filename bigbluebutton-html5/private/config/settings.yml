@@ -148,7 +148,8 @@ public:
     # are used.
     # For more info, see 'microphoneConstraints' option in this config.
     # If not set, default value is true.
-    showAudioFilters: true
+    showAudioFilters: false
+    showDirectAudioFilters: true
     raiseHandActionButton:
       # Enables the old raiseHand icon
       enabled: false

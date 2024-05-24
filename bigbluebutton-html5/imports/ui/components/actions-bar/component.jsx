@@ -8,10 +8,16 @@ import CaptionsReaderMenuContainer from '/imports/ui/components/captions/reader-
 import ScreenshareButtonContainer from '/imports/ui/components/actions-bar/screenshare/container';
 import ReactionsButtonContainer from './reactions-button/container';
 import AudioControlsContainer from '../audio/audio-controls/container';
+import AudioFilterContainer from  '../audio/audio-filter/container';
 import JoinVideoOptionsContainer from '../video-provider/video-button/container';
 import PresentationOptionsContainer from './presentation-options/component';
 import RaiseHandDropdownContainer from './raise-hand/container';
 import { isPresentationEnabled } from '/imports/ui/services/features';
+
+const SHOW_DIRECT_AUDIO_FILTERS = (Meteor.settings.public.app
+  .showDirectAudioFilters === undefined)
+  ? true
+  : Meteor.settings.public.app.showDirectAudioFilters;
 
 class ActionsBar extends PureComponent {
   constructor(props) {
@@ -138,6 +144,7 @@ class ActionsBar extends PureComponent {
             : null }
         </Styled.Left>
         <Styled.Center>
+          {SHOW_DIRECT_AUDIO_FILTERS && <AudioFilterContainer />}
           <AudioControlsContainer />
           {enableVideo
             ? (

@@ -129,13 +129,13 @@ class InputStreamLiveSelector extends Component {
     if (deviceKind === AUDIO_INPUT) {
       callback(deviceId).then(() => {
         this.setState({ selectedInputDeviceId: deviceId });
-      }).catch((error) => {
+      }).catch(() => {
         notify(intl.formatMessage(intlMessages.deviceChangeFailed), true);
       });
     } else {
       callback(deviceId, true).then(() => {
         this.setState({ selectedOutputDeviceId: deviceId });
-      }).catch((error) => {
+      }).catch(() => {
         notify(intl.formatMessage(intlMessages.deviceChangeFailed), true);
       });
     }
@@ -176,6 +176,8 @@ class InputStreamLiveSelector extends Component {
 
     const {
       liveChangeInputDevice,
+      notify,
+      intl,
     } = this.props;
 
     logger.info({
@@ -187,7 +189,7 @@ class InputStreamLiveSelector extends Component {
     }, 'Current input device was removed. Fallback to default device');
     liveChangeInputDevice(fallbackDevice.deviceId).then(() => {
       this.setState({ selectedInputDeviceId: fallbackDevice.deviceId });
-    }).catch((error) => {
+    }).catch(() => {
       notify(intl.formatMessage(intlMessages.deviceChangeFailed), true);
     });
   }
@@ -197,6 +199,8 @@ class InputStreamLiveSelector extends Component {
 
     const {
       liveChangeOutputDevice,
+      notify,
+      intl,
     } = this.props;
 
     logger.info({
@@ -208,7 +212,7 @@ class InputStreamLiveSelector extends Component {
     }, 'Current output device was removed. Fallback to default device');
     liveChangeOutputDevice(fallbackDevice.deviceId, true).then(() => {
       this.setState({ selectedOutputDeviceId: fallbackDevice.deviceId });
-    }).catch((error) => {
+    }).catch(() => {
       notify(intl.formatMessage(intlMessages.deviceChangeFailed), true);
     });
   }
