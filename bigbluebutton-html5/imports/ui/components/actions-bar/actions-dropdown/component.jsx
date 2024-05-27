@@ -14,6 +14,7 @@ import { uniqueId } from '/imports/utils/string-utils';
 import { isPresentationEnabled, isLayoutsEnabled } from '/imports/ui/services/features';
 import VideoPreviewContainer from '/imports/ui/components/video-preview/container';
 import { screenshareHasEnded } from '/imports/ui/components/screenshare/service';
+import PresentationService from '/imports/ui/components/presentation/presentation-uploader/service.js';
 
 const propTypes = {
   amIPresenter: PropTypes.bool.isRequired,
@@ -195,14 +196,29 @@ class ActionsDropdown extends PureComponent {
     const actions = [];
 
     if (amIPresenter && isPresentationEnabled()) {
-      actions.push({
-        icon: 'upload',
-        dataTest: 'managePresentations',
-        label: formatMessage(presentationLabel),
-        key: this.presentationItemId,
-        onClick: handlePresentationClick,
-        dividerTop: this.props?.presentations?.length > 1 ? true : false,
-      });
+      const {presentationUploadExternalDescription, presentationUploadExternalUrl} = PresentationService.getExternalUploadData();
+
+      if (presentationUploadExternalUrl && presentationUploadExternalDescription) {
+        actions.push({
+          icon: 'upload',
+          dataTest: 'externalPresentations',
+          label: presentationUploadExternalDescription,
+          key: this.presentationItemId,
+          onClick: () => {
+            window.open(presentationUploadExternalUrl,'_blank');
+          },
+          dividerTop: this.props?.presentations?.length > 1 ? true : false,
+        });
+      } else {
+        actions.push({
+          icon: 'upload',
+          dataTest: 'managePresentations',
+          label: formatMessage(presentationLabel),
+          key: this.presentationItemId,
+          onClick: handlePresentationClick,
+          dividerTop: this.props?.presentations?.length > 1 ? true : false,
+        });
+      }
     }
 
     if (amIPresenter && isPollingEnabled) {
