@@ -24,7 +24,7 @@ export const INITIAL_INPUT_STATE = {
     height: DEFAULT_VALUES.actionBarHeight,
   },
   sidebarNavigation: {
-    isOpen: true,
+    isOpen: false,
     width: 0,
     height: 0,
     browserWidth: 0,

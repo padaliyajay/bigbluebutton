@@ -10,7 +10,7 @@ const DEFAULT_VALUES = {
   idChatOpen: PUBLIC_CHAT_ID,
   fontSize: 16,
 
-  cameraPosition: CAMERADOCK_POSITION.CONTENT_TOP,
+  cameraPosition: CAMERADOCK_POSITION.CONTENT_LEFT,
   cameraDockTabOrder: 4,
   cameraDockMinHeight: 120,
   cameraDockMinWidth: 120,

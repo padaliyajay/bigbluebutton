@@ -149,7 +149,7 @@ class App extends Component {
       isAudioModalOpen: false,
       isRandomUserSelectModalOpen: false,
       isVideoPreviewModalOpen: false,
-      presentationFitToWidth: false,
+      presentationFitToWidth: true,
     };
 
     this.isTimerEnabled = TimerService.isEnabled();
