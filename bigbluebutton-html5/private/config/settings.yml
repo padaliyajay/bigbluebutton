@@ -26,16 +26,16 @@ public:
     # "media.setsinkid.enabled" to make it work properly
     # enableDynamicAudioDeviceSelection: true
     #
-    clientTitle: BigBlueButton
-    appName: BigBlueButton HTML5 Client
+    clientTitle: TeacherNet
+    appName: TeacherNet
     bbbServerVersion: HTML5_FULL_BBB_VERSION
-    displayBbbServerVersion: true
-    copyright: '©2024 BigBlueButton Inc.'
+    displayBbbServerVersion: false
+    copyright: '©2024 TeacherNet.com.'
     html5ClientBuild: HTML5_CLIENT_VERSION
     helpLink: https://bigbluebutton.org/html5/
     delayForUnmountOfSharedNote: 120000
     bbbTabletApp:
-      enabled: true
+      enabled: false
       iosAppStoreUrl: 'https://apps.apple.com/us/app/bigbluebutton-tablet/id1641156756'
       iosAppUrlScheme: 'bigbluebutton-tablet'
     lockOnJoin: true
@@ -288,7 +288,7 @@ public:
     branding:
       displayBrandingArea: true
     connectionTimeout: 60000
-    showHelpButton: true
+    showHelpButton: false
     effectiveConnection:
       - critical
       - danger
