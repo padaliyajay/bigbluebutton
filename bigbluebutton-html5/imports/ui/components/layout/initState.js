@@ -31,7 +31,7 @@ export const INITIAL_INPUT_STATE = {
     sidebarNavPanel: DEFAULT_VALUES.sidebarNavPanel,
   },
   sidebarContent: {
-    isOpen: true,
+    isOpen: false,
     currentPanelType: DEFAULT_VALUES.panelType,
     width: 0,
     height: 0,
@@ -174,7 +174,7 @@ export const INITIAL_OUTPUT_STATE = {
   },
   cameraDock: {
     display: false,
-    position: null,
+    position: DEFAULT_VALUES.cameraPosition,
     minWidth: 0,
     width: 0,
     maxWidth: 0,

@@ -9,7 +9,7 @@
     "app.chat.emojiButtonLabel": "Emoji Picker",
     "app.chat.loadMoreButtonLabel": "Load More",
     "app.chat.inputPlaceholder": "Message {0}",
-    "app.chat.titlePublic": "Public Chat",
+    "app.chat.titlePublic": "Chat",
     "app.chat.titlePrivate": "Private Chat with {0}",
     "app.chat.partnerDisconnected": "{0} has left the meeting",
     "app.chat.closeChatLabel": "Close {0}",

@@ -594,7 +594,7 @@ public:
     timeBetweenFetchs: 1000
     enableSaveAndCopyPublicChat: true
     bufferChatInsertsMs: 0
-    startClosed: false
+    startClosed: true
     min_message_length: 1
     max_message_length: 5000
     grouping_messages_window: 10000
@@ -646,7 +646,7 @@ public:
     pinnable: true
   layout:
     hidePresentationOnJoin: false
-    showParticipantsOnLogin: true
+    showParticipantsOnLogin: false
     showPushLayoutButton: true
     showPushLayoutToggle: true
   pads:

@@ -47,7 +47,7 @@ const addLayout = async (meetingId, layout) => {
     layoutUpdatedAt: new Date().getTime(),
     presentationIsOpen: true,
     isResizing: false,
-    cameraPosition: 'contentTop',
+    cameraPosition: 'contentLeft',
     focusedCamera: 'none',
     presentationVideoRate: 0,
     pushLayout: false,
