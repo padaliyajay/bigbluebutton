@@ -408,7 +408,7 @@ public:
         bitrate: 100
       - id: medium
         name: Medium
-        default: true
+        default: false
         bitrate: 200
       - id: high
         name: High
@@ -420,7 +420,7 @@ public:
           frameRate: 15
       - id: hd
         name: High definition
-        default: false
+        default: true
         bitrate: 800
         constraints:
           width: 1280
@@ -428,7 +428,7 @@ public:
           frameRate: 30
       - id: fhd
         name: Camera as content
-        hidden: true
+        hidden: false
         default: false
         bitrate: 1500
         constraints:
