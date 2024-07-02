@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { defineMessages, injectIntl } from 'react-intl';
 import Styled from './styles';
-import Settings from '/imports/ui/services/settings';
 import ApplicationMenu from '/imports/ui/components/settings/submenus/application/component';
 
 const propTypes = {
@@ -11,6 +10,9 @@ const propTypes = {
   }).isRequired,
   isAudioConnected: PropTypes.bool.isRequired,
   isListenOnly: PropTypes.bool.isRequired,
+  updateSettings: PropTypes.func.isRequired,
+  application: PropTypes.object.isRequired,
+  transcription: PropTypes.object.isRequired,
 };
 
 const intlMessages = defineMessages({
@@ -22,31 +24,49 @@ const intlMessages = defineMessages({
     id: 'app.audioFilter.audioFilterDisabledButtonText',
     description: 'Turn off original sound',
   },
+  audioFilterEnabledAlertText: {
+    id: 'app.audioFilter.audioFilterEnabledAlertText',
+    description: 'Original sound turned on',
+  },
+  audioFilterDisabledAlertText: {
+    id: 'app.audioFilter.audioFilterDisabledAlertText',
+    description: 'Original sound turned off',
+  },
 });
 
 class AudioFilter extends React.Component {
   constructor(props) {
     super(props);
 
+    const { application } = this.props;
+
     this.state = {
       audioFilterEnabled: ApplicationMenu.isAudioFilterEnabled(
-        Settings.application.microphoneConstraints,
+        application.microphoneConstraints,
       ),
     };
 
+    this.updateSettings = props.updateSettings;
     this.handleAudioFilterToggle = this.handleAudioFilterToggle.bind(this);
   }
 
   handleAudioFilterToggle() {
     const { audioFilterEnabled } = this.state;
+    const { application, transcription } = this.props;
 
     const _newConstraints = {
       autoGainControl: !audioFilterEnabled,
       echoCancellation: !audioFilterEnabled,
       noiseSuppression: !audioFilterEnabled,
     };
-    Settings.application.microphoneConstraints = _newConstraints;
-    Settings.save();
+
+    this.updateSettings({
+      transcription,
+      application: {
+        ...application,
+        microphoneConstraints: _newConstraints,
+      },
+    }, audioFilterEnabled ? intlMessages.audioFilterEnabledAlertText : intlMessages.audioFilterDisabledAlertText);
 
     this.setState({ audioFilterEnabled: !audioFilterEnabled });
   }

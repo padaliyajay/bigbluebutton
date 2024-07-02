@@ -810,6 +810,8 @@
     "app.audio.captions.select.zh-CN": "Chinese",
     "app.audioFilter.audioFilterEnabledButtonText": "Turn on original sound (headphones required)",
     "app.audioFilter.audioFilterDisabledButtonText": "Turn off original sound",
+    "app.audioFilter.audioFilterEnabledAlertText": "Original sound turned on",
+    "app.audioFilter.audioFilterDisabledAlertText": "Original sound turned off",
     "app.error.removed": "You have been removed from the conference",
     "app.error.meeting.ended": "You have logged out of the conference",
     "app.meeting.logout.duplicateUserEjectReason": "Duplicate user trying to join meeting",
