@@ -18,5 +18,4 @@ export default withTracker(() => ({
   isListenOnly: Service.isListenOnly(),
   updateSettings,
   application: SettingsService.application,
-  transcription: SettingsService.transcription,
 }))(AudioFilterContainer);

@@ -12,7 +12,6 @@ const propTypes = {
   isListenOnly: PropTypes.bool.isRequired,
   updateSettings: PropTypes.func.isRequired,
   application: PropTypes.object.isRequired,
-  transcription: PropTypes.object.isRequired,
 };
 
 const intlMessages = defineMessages({
@@ -52,7 +51,7 @@ class AudioFilter extends React.Component {
 
   handleAudioFilterToggle() {
     const { audioFilterEnabled } = this.state;
-    const { application, transcription } = this.props;
+    const { application } = this.props;
 
     const _newConstraints = {
       autoGainControl: !audioFilterEnabled,
@@ -61,7 +60,6 @@ class AudioFilter extends React.Component {
     };
 
     this.updateSettings({
-      transcription,
       application: {
         ...application,
         microphoneConstraints: _newConstraints,
