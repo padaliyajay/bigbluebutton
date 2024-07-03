@@ -15,6 +15,7 @@ import { colorDanger, colorWhite } from '/imports/ui/stylesheets/styled-componen
 import Styled from './styles';
 import browserInfo from '/imports/utils/browserInfo';
 import deviceInfo from '/imports/utils/deviceInfo';
+import { isLayoutsEnabled } from '/imports/ui/services/features';
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -332,15 +333,17 @@ class SettingsDropdown extends PureComponent {
       },
     );
 
-    this.menuItems.push(
-      {
-        key: 'list-item-layout-modal',
-        icon: 'manage_layout',
-        label: intl.formatMessage(intlMessages.layoutModal),
-        onClick: () => this.setLayoutModalIsOpen(true),
-        divider: isDirectLeaveButtonEnabled ? false : true,
-      },
-    );
+    if (isLayoutsEnabled()){
+      this.menuItems.push(
+        {
+          key: 'list-item-layout-modal',
+          icon: 'manage_layout',
+          label: intl.formatMessage(intlMessages.layoutModal),
+          onClick: () => this.setLayoutModalIsOpen(true),
+          divider: isDirectLeaveButtonEnabled ? false : true,
+        },
+      );
+    }
 
     if (allowLogoutSetting && isMeteorConnected && !isDirectLeaveButtonEnabled) {
       this.menuItems.push(

@@ -158,7 +158,7 @@ public:
     reactionsButton:
       # Enables the new raiseHand icon inside of the reaction menu (introduced in BBB 2.7)
       # If both reactionsButton and raiseHandActionButton are enabled, reactionsButton takes precedence.
-      enabled: true
+      enabled: false
     emojiRain:
       # If true, new reactions will be activated
       enabled: false
@@ -207,7 +207,7 @@ public:
         paginationEnabled: true
         whiteboardToolbarAutoHide: false
         autoCloseReactionsBar: true
-        directLeaveButton: false
+        directLeaveButton: true
         darkTheme: false
         # fallbackLocale: if the locale the client is loaded in does not have a
         # translation a string, it will use the translation from the locale
@@ -434,7 +434,7 @@ public:
         constraints:
           width: 1920
           height: 1080
-    enableScreensharing: true
+    enableScreensharing: false
     enableVideo: true
     enableVideoMenu: true
     enableVideoPin: true
@@ -549,7 +549,7 @@ public:
     enabled: false
     syncInterval: 60000
   poll:
-    enabled: true
+    enabled: false
     allowCustomResponseInput: true
     maxCustom: 5
     maxTypedAnswerLength: 45
@@ -862,7 +862,7 @@ public:
       - extension: .webp
         mime: image/webp
   selectRandomUser:
-    enabled: true
+    enabled: false
     countdown: false
   user:
     role_moderator: MODERATOR

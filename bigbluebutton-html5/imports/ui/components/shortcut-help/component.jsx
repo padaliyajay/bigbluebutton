@@ -378,10 +378,10 @@ const ShortcutHelpComponent = (props) => {
         role="presentation"
       >
         <StyledSettings.SettingsTabList>
-          <StyledSettings.SettingsTabSelector selectedClassName="is-selected">
+          {/* <StyledSettings.SettingsTabSelector selectedClassName="is-selected">
             <StyledSettings.SettingsIcon iconName="application" />
             <span id="appicationTab">{intl.formatMessage(intlMessages.general)}</span>
-          </StyledSettings.SettingsTabSelector>
+          </StyledSettings.SettingsTabSelector> */}
 
           <StyledSettings.SettingsTabSelector selectedClassName="is-selected">
             <StyledSettings.SettingsIcon iconName="presentation" />
@@ -394,7 +394,7 @@ const ShortcutHelpComponent = (props) => {
           </StyledSettings.SettingsTabSelector>
         </StyledSettings.SettingsTabList>
 
-        <Styled.TabPanel selectedClassName="is-selected">
+        {/* <Styled.TabPanel selectedClassName="is-selected">
         {!accessMod ? <p>{intl.formatMessage(intlMessages.accessKeyNotAvailable)}</p>
           : (
             <Styled.TableWrapper>
@@ -410,7 +410,7 @@ const ShortcutHelpComponent = (props) => {
             </Styled.TableWrapper>
           )
         }
-        </Styled.TabPanel>
+        </Styled.TabPanel> */}
         <Styled.TabPanel selectedClassName="is-selected">
           <Styled.TableWrapper>
             <Styled.ShortcutTable>

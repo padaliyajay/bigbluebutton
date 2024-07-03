@@ -277,7 +277,7 @@ class MeetingEnded extends PureComponent {
             </Styled.Title>
             {!allowRedirectToLogoutURL() ? null : (
               <div>
-                {
+                {/* {
                   LearningDashboardService.isModerator()
                   && isLearningDashboardEnabled() === true
                   // Always set cookie in case Dashboard is already opened
@@ -293,7 +293,7 @@ class MeetingEnded extends PureComponent {
                         />
                       </Styled.Text>
                     ) : null
-                }
+                } */}
                 <Styled.Text>
                   {intl.formatMessage(intlMessage.messageEnded)}
                 </Styled.Text>
