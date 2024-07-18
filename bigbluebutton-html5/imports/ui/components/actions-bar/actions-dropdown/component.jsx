@@ -196,13 +196,13 @@ class ActionsDropdown extends PureComponent {
     const actions = [];
 
     if (amIPresenter && isPresentationEnabled()) {
-      const {presentationUploadExternalDescription, presentationUploadExternalUrl} = PresentationService.getExternalUploadData();
+      const {presentationUploadExternalUrl} = PresentationService.getExternalUploadData();
 
-      if (presentationUploadExternalUrl && presentationUploadExternalDescription && amIModerator) {
+      if (presentationUploadExternalUrl && amIModerator) {
         actions.push({
           icon: 'upload',
           dataTest: 'externalPresentations',
-          label: presentationUploadExternalDescription,
+          label: formatMessage(presentationLabel),
           key: this.presentationItemId,
           onClick: () => {
             window.open(presentationUploadExternalUrl, 'presentationUploadExternalUrl-window', isMobile ? null : `width=640,height=600,location=no,menubar=no,status=no,toolbar=no,scrollbars=yes,resizable=yes,left=${(window.screen.width - 640) / 2},top=${(window.screen.height - 600) / 2}`);

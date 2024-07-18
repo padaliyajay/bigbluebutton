@@ -636,7 +636,7 @@
     "app.actionsBar.actionsDropdown.actionsLabel": "Actions",
     "app.actionsBar.actionsDropdown.activateTimerStopwatchLabel": "Activate timer/stopwatch",
     "app.actionsBar.actionsDropdown.deactivateTimerStopwatchLabel": "Deactivate timer/stopwatch",
-    "app.actionsBar.actionsDropdown.presentationLabel": "Upload/Manage presentations",
+    "app.actionsBar.actionsDropdown.presentationLabel": "Upload/Manage PDF files",
     "app.actionsBar.actionsDropdown.initPollLabel": "Initiate a poll",
     "app.actionsBar.actionsDropdown.desktopShareLabel": "Share your screen",
     "app.actionsBar.actionsDropdown.stopDesktopShareLabel": "Stop sharing your screen",
