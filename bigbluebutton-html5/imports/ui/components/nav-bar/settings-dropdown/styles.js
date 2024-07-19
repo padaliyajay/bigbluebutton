@@ -15,6 +15,15 @@ const DropdownButton = styled(Button)`
   `}
 `;
 
+const CustomIcon = styled.span`
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 1;
+    vertical-align: middle;
+`;
+
 export default {
   DropdownButton,
+  CustomIcon,
 };

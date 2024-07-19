@@ -138,9 +138,11 @@ class BBBMenu extends React.Component {
           }}>
           <Styled.MenuItemWrapper>
             {a.icon ? <Icon iconName={a.icon} key="icon" /> : null}
+            {a.customIcon ? a.customIcon : null}
             <Styled.Option isHorizontal={isHorizontal} isMobile={isMobile} aria-describedby={`${key}-option-desc`}>{label}</Styled.Option>
             {description && <div className="sr-only" id={`${key}-option-desc`}>{`${description}${selected ? ` - ${intl.formatMessage(intlMessages.active)}` : ''}`}</div>}
             {a.iconRight ? <Styled.IconRight iconName={a.iconRight} key="iconRight" /> : null}
+            {a.customIconRight ? a.customIconRight : null}
           </Styled.MenuItemWrapper>
         </Styled.BBBMenuItem>,
         a.divider && <Divider disabled />
