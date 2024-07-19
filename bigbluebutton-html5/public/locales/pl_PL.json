@@ -299,6 +299,8 @@
     "app.navBar.settingsDropdown.exitFullscreenDesc": "Wyłącza tryb pełnoekranowy",
     "app.navBar.settingsDropdown.hotkeysLabel": "Skróty klawiszowe",
     "app.navBar.settingsDropdown.hotkeysDesc": "Wyświetla dostępne skróty klawiszowe",
+    "app.navBar.settingsDropdown.shareLabel": "Udostępnij",
+    "app.navBar.settingsDropdown.shareDesc": "Udostępnij link do spotkania",
     "app.navBar.settingsDropdown.helpLabel": "Pomoc",
     "app.navBar.settingsDropdown.helpDesc": "Link do stron z filmami instruktażowymi (otwiera nową zakładkę przeglądarki)",
     "app.navBar.settingsDropdown.endMeetingDesc": "Kończy bieżące spotkanie",

@@ -15,6 +15,7 @@ import deviceInfo from '/imports/utils/deviceInfo';
 import { PANELS, ACTIONS } from '../layout/enums';
 import { isEqual } from 'radash';
 import LeaveMeetingButtonContainer from './leave-meeting-button/container';
+import getFromMeetingSettings from '/imports/ui/services/meeting-settings';
 
 const intlMessages = defineMessages({
   toggleUserListLabel: {
@@ -60,6 +61,7 @@ class NavBar extends Component {
 
     this.state = {
         acs: props.activeChats,
+        shareUrl: '',
     }
 
     this.handleToggleUserList = this.handleToggleUserList.bind(this);
@@ -102,6 +104,8 @@ class NavBar extends Component {
         }
       });
     }
+
+    this.setState({ shareUrl: getFromMeetingSettings('shareurl', '') });
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -184,7 +188,7 @@ class NavBar extends Component {
     const { isPhone } = deviceInfo;
 
 
-    const { acs } = this.state;
+    const { acs, shareUrl } = this.state;
 
     activeChats.map((c, i) => {
       if (c?.unreadCounter > 0 && c?.unreadCounter !== acs[i]?.unreadCounter) {
@@ -254,6 +258,7 @@ class NavBar extends Component {
             <SettingsDropdownContainer
               amIModerator={amIModerator}
               isDirectLeaveButtonEnabled={isDirectLeaveButtonEnabled}
+              shareUrl={shareUrl}
             />
           </Styled.Right>
         </Styled.Top>

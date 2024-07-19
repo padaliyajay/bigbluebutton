@@ -452,6 +452,8 @@
     "app.navBar.settingsDropdown.exitFullscreenDesc": "Exit fullscreen mode",
     "app.navBar.settingsDropdown.hotkeysLabel": "Keyboard shortcuts",
     "app.navBar.settingsDropdown.hotkeysDesc": "Listing of available keyboard shortcuts",
+    "app.navBar.settingsDropdown.shareLabel": "Share link",
+    "app.navBar.settingsDropdown.shareDesc": "Share the meeting link",
     "app.navBar.settingsDropdown.helpLabel": "Help",
     "app.navBar.settingsDropdown.openAppLabel": "Open in Teachernet Tablet app",
     "app.navBar.settingsDropdown.helpDesc": "Links user to video tutorials (opens new tab)",
