@@ -10,6 +10,7 @@ import logger from '/imports/startup/client/logger';
 import playAndRetry from '/imports/utils/mediaElementPlayRetry';
 import VideoService from '/imports/ui/components/video-provider/service';
 import { ACTIONS } from '../../layout/enums';
+import Auth from '/imports/ui/services/auth';
 
 const propTypes = {
   streams: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -95,13 +96,15 @@ class VideoList extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { layoutType, cameraDock, streams, focusedId } = this.props;
+    const { layoutType, cameraDock, streams, focusedId, disabledCams, settingsSelfViewDisable } = this.props;
     const { width: cameraDockWidth, height: cameraDockHeight } = cameraDock;
     const {
       layoutType: prevLayoutType,
       cameraDock: prevCameraDock,
       streams: prevStreams,
       focusedId: prevFocusedId,
+      disabledCams: prevDisabledCams,
+      settingsSelfViewDisable: prevSettingsSelfViewDisable,
     } = prevProps;
     const { width: prevCameraDockWidth, height: prevCameraDockHeight } = prevCameraDock;
 
@@ -109,7 +112,9 @@ class VideoList extends Component {
       || focusedId !== prevFocusedId
       || cameraDockWidth !== prevCameraDockWidth
       || cameraDockHeight !== prevCameraDockHeight
-      || streams.length !== prevStreams.length) {
+      || streams.length !== prevStreams.length
+      || disabledCams.length !== prevDisabledCams.length
+      || settingsSelfViewDisable !== prevSettingsSelfViewDisable) {
       this.handleCanvasResize();
     }
   }
@@ -175,8 +180,16 @@ class VideoList extends Component {
       streams,
       cameraDock,
       layoutContextDispatch,
+      disabledCams,
+      settingsSelfViewDisable,
     } = this.props;
     let numItems = streams.length;
+
+    if (settingsSelfViewDisable) {
+      numItems = streams.filter(s => s.userId !== Auth.userID).length;
+    } else {
+      numItems = numItems - disabledCams.length;
+    }
 
     if (numItems < 1 || !this.canvas || !this.grid) {
       return;
@@ -297,6 +310,8 @@ class VideoList extends Component {
       swapLayout,
       handleVideoFocus,
       focusedId,
+      disabledCams,
+      settingsSelfViewDisable,
     } = this.props;
     const numOfStreams = streams.length;
 
@@ -308,6 +323,11 @@ class VideoList extends Component {
       const stream = isStream ? item.stream : null;
       const key = isStream ? stream : userId;
       const isFocused = isStream && focusedId === stream && numOfStreams > 2;
+
+      // Do not render the video item if self view is disabled
+      if (disabledCams.includes(stream) || (settingsSelfViewDisable && userId === Auth.userID)) {
+        return false;
+      }
 
       return (
         <Styled.VideoListItem
@@ -333,7 +353,7 @@ class VideoList extends Component {
           />
         </Styled.VideoListItem>
       );
-    });
+    }).filter(Boolean);
   }
 
   render() {

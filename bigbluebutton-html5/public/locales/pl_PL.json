@@ -713,6 +713,7 @@
     "app.video.pagination.nextPage": "Zobacz kolejne video",
     "app.video.clientDisconnected": "Obraz kamery nie może zostać udostępniony z powodu problemów z połączeniem",
     "app.video.virtualBackground.camBgAriaDesc": "Ustaw wirtualne tło kamery na {0}",
+    "app.video.enableAllCams": "Włącz podgląd własnego obrazu",
     "app.fullscreenButton.label": "Przełącz {0} na pełny ekran",
     "app.fullscreenUndoButton.label": "Cofnij {0} pełny ekran",
     "app.sfu.mediaServerConnectionError2000": "Nie można połączyć się z serwerem multimediów (błąd 2000)",

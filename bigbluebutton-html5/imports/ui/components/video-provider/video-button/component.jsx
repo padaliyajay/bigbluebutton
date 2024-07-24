@@ -52,6 +52,10 @@ const intlMessages = defineMessages({
     id: 'app.video.clientDisconnected',
     description: 'Meteor disconnected label',
   },
+  enableAllCams: {
+    id: 'app.video.enableAllCams',
+    description: 'Enable all disabled self view cameras',
+  },
 });
 
 const JOIN_VIDEO_DELAY_MILLISECONDS = 500;
@@ -156,6 +160,25 @@ const JoinVideoButton = ({
           label: intl.formatMessage(intlMessages.visualEffects),
           onClick: () => handleOpenAdvancedOptions((
           ) => setPropsToPassModal({ isVisualEffects: true })),
+        },
+      );
+    }
+
+    const disabledCams = Session.get('disabledCams') || [];
+
+    if (Settings.application.selfViewDisable || disabledCams.length > 0) {
+      actions.push(
+        {
+          key: 'enableAllCams',
+          label: intl.formatMessage(intlMessages.enableAllCams),
+          onClick: () => {
+            Session.set('disabledCams', []);
+            const obj = {
+              application:
+                { ...Settings.application, selfViewDisable: false },
+            };
+            updateSettings(obj);
+          },
         },
       );
     }

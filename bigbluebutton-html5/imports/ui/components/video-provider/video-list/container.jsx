@@ -4,12 +4,21 @@ import VideoList from '/imports/ui/components/video-provider/video-list/componen
 import VideoService from '/imports/ui/components/video-provider/service';
 import { layoutSelect, layoutSelectOutput, layoutDispatch } from '../../layout/context';
 import Users from '/imports/api/users';
+import Auth from '/imports/ui/services/auth';
+import Settings from '/imports/ui/services/settings';
 
 const VideoListContainer = ({ children, ...props }) => {
   const layoutType = layoutSelect((i) => i.layoutType);
   const cameraDock = layoutSelectOutput((i) => i.cameraDock);
   const layoutContextDispatch = layoutDispatch();
-  const { streams } = props;
+  const { streams, disabledCams, settingsSelfViewDisable } = props;
+
+  if (settingsSelfViewDisable && streams.filter((stream) => stream.userId === Auth.userID).length === 0) {
+    return null;
+  }
+  if (disabledCams.length == streams?.length) {
+    return null;
+  }
 
   return (
     !streams.length
@@ -40,5 +49,7 @@ export default withTracker((props) => {
           userId: 1,
         },
       })),
+    disabledCams: Session.get('disabledCams') || [],
+    settingsSelfViewDisable: Settings.application.selfViewDisable,
   };
 })(VideoListContainer);

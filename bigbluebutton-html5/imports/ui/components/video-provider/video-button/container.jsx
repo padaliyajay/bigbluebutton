@@ -6,6 +6,7 @@ import VideoService from '../service';
 import {
   updateSettings,
 } from '/imports/ui/components/settings/service';
+import Settings from '/imports/ui/services/settings';
 
 const JoinVideoOptionsContainer = (props) => {
   const {
@@ -30,4 +31,6 @@ export default injectIntl(withTracker(() => ({
   updateSettings,
   disableReason: VideoService.disableReason(),
   status: VideoService.getStatus(),
+  disabledCams: Session.get('disabledCams') || [],
+  settingsSelfViewDisable: Settings.application.selfViewDisable,
 }))(JoinVideoOptionsContainer));
