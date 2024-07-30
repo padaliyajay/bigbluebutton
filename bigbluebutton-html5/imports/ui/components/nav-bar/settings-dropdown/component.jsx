@@ -16,6 +16,7 @@ import Styled from './styles';
 import browserInfo from '/imports/utils/browserInfo';
 import deviceInfo from '/imports/utils/deviceInfo';
 import { isLayoutsEnabled } from '/imports/ui/services/features';
+import { notify } from '/imports/ui/services/notification';
 
 const intlMessages = defineMessages({
   optionsLabel: {
@@ -77,6 +78,10 @@ const intlMessages = defineMessages({
   shareDesc: {
     id: 'app.navBar.settingsDropdown.shareDesc',
     description: 'Describes share',
+  },
+  shareCopy: {
+    id: 'app.navBar.settingsDropdown.shareCopy',
+    description: 'Copy share',
   },
   layoutModal: {
     id: 'app.actionsBar.actionsDropdown.layoutModal',
@@ -358,10 +363,16 @@ class SettingsDropdown extends PureComponent {
       this.menuItems.push(
         {
           key: 'list-item-share',
-          customIcon: <Styled.CustomIcon><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1} stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" /></svg></Styled.CustomIcon>,
+          icon: 'copy',
           label: intl.formatMessage(intlMessages.shareLabel),
           description: intl.formatMessage(intlMessages.shareDesc),
-          onClick: () => window.open(shareUrl, "_blank"),
+          onClick: () => {
+            navigator.clipboard.writeText(shareUrl).then(() => notify(
+              intl.formatMessage(intlMessages.shareCopy),
+              'info',
+              'copy',
+            )).catch(() => window.open(shareUrl, '_blank'));
+          },
         },
       );
     }
