@@ -189,17 +189,17 @@ function get_gap(dash, size) {
 function get_stroke_width(dash, size) {
   switch (size) {
     case 'small': if (dash === 'draw') {
-      return 2;
+      return 0.25;
     } else {
       return 4;
     }
     case 'medium': if (dash === 'draw') {
-      return 3.5;
+      return 0.5;
     } else {
       return 6.25;
     }
     case 'large': if (dash === 'draw') {
-      return 5;
+      return 1;
     } else {
       return 8.5;
     }
