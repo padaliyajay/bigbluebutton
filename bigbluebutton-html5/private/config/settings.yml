@@ -97,7 +97,7 @@ public:
       language:
         # Available languages will depend on the transcription service
         # Google: https://cloud.google.com/speech-to-text/docs/speech-to-text-supported-languages
-        # Gladia: https://docs-v1.gladia.io/reference/supported-languages
+        # Gladia: https://docs.gladia.io/chapters/speech-to-text-api/pages/languages#supported-languages
         available:
         # - ca-ES
         # - de-DE
@@ -138,6 +138,7 @@ public:
       captureSharedNotesByDefault: false
       sendInvitationToAssignedModeratorsByDefault: false
       breakoutRoomLimit: 16
+      allowPresentationManagementInBreakouts: true
     # https://github.com/bigbluebutton/bigbluebutton/pull/10826
     customHeartbeat: false
     customHeartbeatUseDataFrames: true
@@ -789,7 +790,16 @@ public:
     enabled: true
     interval: 10000
     timeout: 30000
+    # Server-side stats event logging. Everytime a connection status event update
+    # is received by Meteor, it'll be logged *by the server*.
     log: true
+    # Client-side WebRTC stats logging. If enabled, the client will log periodic
+    # WebRTC stats information to the configured logging transports.
+    # Disabled by default. This log is verbose and may incur in additional network
+    # usage if external logging targets are configured.
+    logMediaStats:
+      enabled: false
+      interval: 30000
     notification:
       warning: false
       error: true
@@ -822,6 +832,9 @@ public:
     mirroredFromBBBCore:
       uploadSizeMax: 30000000
       uploadPagesMax: 200
+    # If the following mime-types list is changed, please, make sure to also change:
+    # bbb-common-web/src/main/java/org/bigbluebutton/presentation/MimeTypeUtils.java: L34 (and related files.)
+    # docs/docs/development/api.md: L1222
     uploadValidMimeTypes:
       - extension: .pdf
         mime: application/pdf

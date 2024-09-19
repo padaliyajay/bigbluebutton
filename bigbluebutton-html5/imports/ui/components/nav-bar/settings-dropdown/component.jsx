@@ -337,6 +337,8 @@ class SettingsDropdown extends PureComponent {
       );
     }
 
+    const enableLayoutButton = isLayoutsEnabled();
+
     this.menuItems.push(
       {
         key: 'list-item-shortcuts',
@@ -344,19 +346,22 @@ class SettingsDropdown extends PureComponent {
         label: intl.formatMessage(intlMessages.hotkeysLabel),
         description: intl.formatMessage(intlMessages.hotkeysDesc),
         onClick: () => this.setShortcutHelpModalIsOpen(true),
+        divider: !isDirectLeaveButtonEnabled && !enableLayoutButton,
       },
     );
 
-    if (isLayoutsEnabled()){
+    if (enableLayoutButton) {
+      if (isLayoutsEnabled()){
       this.menuItems.push(
-        {
-          key: 'list-item-layout-modal',
-          icon: 'manage_layout',
-          label: intl.formatMessage(intlMessages.layoutModal),
-          onClick: () => this.setLayoutModalIsOpen(true),
-          divider: isDirectLeaveButtonEnabled ? false : true,
-        },
-      );
+          {
+            key: 'list-item-layout-modal',
+            icon: 'manage_layout',
+            label: intl.formatMessage(intlMessages.layoutModal),
+            onClick: () => this.setLayoutModalIsOpen(true),
+            divider: !isDirectLeaveButtonEnabled,
+          },
+        );
+    }
     }
 
     if (shareUrl) {
