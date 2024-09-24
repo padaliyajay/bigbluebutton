@@ -5,7 +5,7 @@ const logoutRouteHandler = () => {
     .then((logoutURL) => {
       if (logoutURL) {
         const protocolPattern = /^((http|https):\/\/)/;
-        window.location.href = protocolPattern.test(logoutURL) ? logoutURL : `http://${logoutURL}`;
+        window.top.location.href = protocolPattern.test(logoutURL) ? logoutURL : `http://${logoutURL}`;
       }
     });
 };
