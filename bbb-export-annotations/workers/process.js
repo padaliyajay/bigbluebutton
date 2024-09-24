@@ -171,19 +171,19 @@ function get_gap(dash, size) {
   switch (dash) {
     case 'dashed':
       if (size == 'small') {
-        return '8 8';
+        return '4 4';
       } else if (size == 'medium') {
-        return '14 14';
+        return '7 7';
       } else {
-        return '20 20';
+        return '10 10';
       }
     case 'dotted':
       if (size == 'small') {
-        return '0.1 8';
+        return '0.1 4';
       } else if (size == 'medium') {
-        return '0.1 14';
+        return '0.1 6';
       } else {
-        return '0.1 20';
+        return '0.1 10';
       }
 
     default: return '0';
@@ -195,17 +195,17 @@ function get_stroke_width(dash, size) {
     case 'small': if (dash === 'draw') {
       return 0.25;
     } else {
-      return 4;
+      return 1;
     }
     case 'medium': if (dash === 'draw') {
       return 0.5;
     } else {
-      return 6.25;
+      return 1.5;
     }
     case 'large': if (dash === 'draw') {
       return 1;
     } else {
-      return 8.5;
+      return 2.5;
     }
 
     default: return 1;
