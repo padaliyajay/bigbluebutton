@@ -260,38 +260,38 @@ class UserOptions extends PureComponent {
           });
         }
 
-        this.menuItems.push({
-          key: this.lockId,
-          label: intl.formatMessage(intlMessages.lockViewersLabel),
-          description: intl.formatMessage(intlMessages.lockViewersDesc),
-          onClick: () => this.setLockViewersModalIsOpen(true),
-          icon: 'lock',
-          dataTest: 'lockViewersButton',
-        });
+        // this.menuItems.push({
+        //   key: this.lockId,
+        //   label: intl.formatMessage(intlMessages.lockViewersLabel),
+        //   description: intl.formatMessage(intlMessages.lockViewersDesc),
+        //   onClick: () => this.setLockViewersModalIsOpen(true),
+        //   icon: 'lock',
+        //   dataTest: 'lockViewersButton',
+        // });
 
-        if (dynamicGuestPolicy) {
-          this.menuItems.push({
-            key: this.guestPolicyId,
-            icon: 'user',
-            label: intl.formatMessage(intlMessages.guestPolicyLabel),
-            description: intl.formatMessage(intlMessages.guestPolicyDesc),
-            onClick: () => this.setGuestPolicyModalIsOpen(true),
-            dataTest: 'guestPolicyLabel',
-          });
-        }
+        // if (dynamicGuestPolicy) {
+        //   this.menuItems.push({
+        //     key: this.guestPolicyId,
+        //     icon: 'user',
+        //     label: intl.formatMessage(intlMessages.guestPolicyLabel),
+        //     description: intl.formatMessage(intlMessages.guestPolicyDesc),
+        //     onClick: () => this.setGuestPolicyModalIsOpen(true),
+        //     dataTest: 'guestPolicyLabel',
+        //   });
+        // }
       }
 
-      if (amIModerator) {
-        this.menuItems.push({
-          key: this.saveUsersNameId,
-          label: intl.formatMessage(intlMessages.saveUserNames),
-          // description: ,
-          onClick: this.onSaveUserNames,
-          icon: 'download',
-          dataTest: 'downloadUserNamesList',
-          divider: !USER_STATUS_ENABLED,
-        });
-      }
+      // if (amIModerator) {
+      //   this.menuItems.push({
+      //     key: this.saveUsersNameId,
+      //     label: intl.formatMessage(intlMessages.saveUserNames),
+      //     // description: ,
+      //     onClick: this.onSaveUserNames,
+      //     icon: 'download',
+      //     dataTest: 'downloadUserNamesList',
+      //     divider: !USER_STATUS_ENABLED,
+      //   });
+      // }
 
       if (USER_STATUS_ENABLED) {
         this.menuItems.push({
@@ -304,16 +304,16 @@ class UserOptions extends PureComponent {
         });
       }
 
-      if (USER_REACTION_ENABLED) {
-        this.menuItems.push({
-          key: this.clearReactionId,
-          label: intl.formatMessage(intlMessages.clearAllReactionsLabel),
-          description: intl.formatMessage(intlMessages.clearAllReactionsDesc),
-          onClick: toggleReactions,
-          icon: 'clear_status',
-          divider: true,
-        });
-      }
+      // if (USER_REACTION_ENABLED) {
+      //   this.menuItems.push({
+      //     key: this.clearReactionId,
+      //     label: intl.formatMessage(intlMessages.clearAllReactionsLabel),
+      //     description: intl.formatMessage(intlMessages.clearAllReactionsDesc),
+      //     onClick: toggleReactions,
+      //     icon: 'clear_status',
+      //     divider: true,
+      //   });
+      // }
 
       if (canCreateBreakout) {
         this.menuItems.push({
@@ -335,30 +335,30 @@ class UserOptions extends PureComponent {
           dataTest: 'inviteBreakoutRooms',
         })
 }
-      if (amIModerator && CaptionsService.isCaptionsEnabled()) {
-        this.menuItems.push({
-          icon: 'closed_caption',
-          label: intl.formatMessage(intlMessages.captionsLabel),
-          description: intl.formatMessage(intlMessages.captionsDesc),
-          key: this.captionsId,
-          onClick: () => { this.setWriterMenuModalIsOpen(true); },
-          dataTest: 'writeClosedCaptions',
-        });
-      }
-      if (amIModerator) {
-        if (isLearningDashboardEnabled()) {
-          this.menuItems.push({
-            icon: 'multi_whiteboard',
-            iconRight: 'popout_window',
-            label: intl.formatMessage(intlMessages.learningDashboardLabel),
-            description: `${intl.formatMessage(intlMessages.learningDashboardDesc)} ${intl.formatMessage(intlMessages.newTab)}`,
-            key: this.learningDashboardId,
-            onClick: () => { openLearningDashboardUrl(locale); },
-            dividerTop: true,
-            dataTest: 'learningDashboard'
-          });
-        }
-      }
+      // if (amIModerator && CaptionsService.isCaptionsEnabled()) {
+      //   this.menuItems.push({
+      //     icon: 'closed_caption',
+      //     label: intl.formatMessage(intlMessages.captionsLabel),
+      //     description: intl.formatMessage(intlMessages.captionsDesc),
+      //     key: this.captionsId,
+      //     onClick: () => { this.setWriterMenuModalIsOpen(true); },
+      //     dataTest: 'writeClosedCaptions',
+      //   });
+      // }
+      // if (amIModerator) {
+      //   if (isLearningDashboardEnabled()) {
+      //     this.menuItems.push({
+      //       icon: 'multi_whiteboard',
+      //       iconRight: 'popout_window',
+      //       label: intl.formatMessage(intlMessages.learningDashboardLabel),
+      //       description: `${intl.formatMessage(intlMessages.learningDashboardDesc)} ${intl.formatMessage(intlMessages.newTab)}`,
+      //       key: this.learningDashboardId,
+      //       onClick: () => { openLearningDashboardUrl(locale); },
+      //       dividerTop: true,
+      //       dataTest: 'learningDashboard'
+      //     });
+      //   }
+      // }
     }
 
     return this.menuItems;
