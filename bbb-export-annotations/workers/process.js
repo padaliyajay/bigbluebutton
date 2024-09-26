@@ -894,8 +894,8 @@ async function process_presentation_annotations() {
  */
     const convertAnnotatedSlide = [
       SVGfile,
-      '--output-width', to_px(slideWidth),
-      '--output-height', to_px(slideHeight),
+      '--output-width', to_px(scaledWidth),
+      '--output-height', to_px(scaledHeight),
       ...(config.process.cairoSVGUnsafeFlag ? ['-u'] : []),
       '-o', PDFfile,
     ];
