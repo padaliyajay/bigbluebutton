@@ -174,7 +174,7 @@ export const INITIAL_OUTPUT_STATE = {
   },
   cameraDock: {
     display: false,
-    position: DEFAULT_VALUES.cameraPosition,
+    position: null,
     minWidth: 0,
     width: 0,
     maxWidth: 0,
